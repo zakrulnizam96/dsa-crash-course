@@ -67,7 +67,7 @@
                 style="width: 60%;" alt="Crash Course DSA C++" class="img-fluid mb-4 product-image">
             <h2><i class="icofont-code-alt"></i> Bersedia Untuk Cemerlang dalam subjek Data Structure & Algorithms</h2>
             <p>Saya percaya yang korang akan dapat kusai subjek killer Computer Science ni! 🤩</p>
-            <a href="https://toyyibpay.com/Crash-Course-DSA-C" class="btn btn-danger btn-lg mt-3">Beli Sekarang <i
+            <a href="https://toyyibpay.com/Dsa-Crash-Course-Promo" class="btn btn-danger btn-lg mt-3">Beli Sekarang<i
                     class="icofont-shopping-cart"></i></a>
         </div>
     </section>
@@ -120,22 +120,54 @@
     </section>
 
 
-    <section id="purchase" class="pricing-section ">
-        <div class="container">
-            <h2 class="text-center">Dapatkan DSA Crash Course Anda Hari Ini!</h2>
-            <h1 class="text-center">
-                <span class="pricing-tag">
-                    Harga asal: <span style="text-decoration: line-through;">RM 199.00</span>
-                    <br>
-                    Sekarang: <span style="color: #28a745;">RM 99.00 sahaja!</span>
-                </span>
-            </h1>
-            <div class="text-center">
-                <a href="https://toyyibpay.com/Crash-Course-DSA-C" class="btn btn-danger btn-lg">Beli Sekarang <i
-                        class="icofont-credit-card"></i></a>
+<section id="purchase" class="pricing-section">
+    <!-- New Content Starts Here -->
+    <div class="card mt-4">
+        <div class="card-body">
+            <h3 class="text-center">Apa yang korang akan dapat dalam course ni:</h3>
+            <ul class="mt-4" style="font-size: 1.2rem; list-style-type: none; padding-left: 0;">
+                <li>✔️ Akses kesemua video tutorial selamanya yang merangkumi semua topik penting dalam Data Structure & Algorithm:</li>
+                <ul style="list-style-type: none; padding-left: 20px;">
+                    <li><small>- Sorting Algorithm: Bubble, Selection, Insertion, Quick</small></li>
+                    <li><small>- Searching: Sequential Search, Binary Search</small></li>
+                    <li><small>- Binary Tree (Tree), Linked List, Stack, Queue</small></li>
+                </ul>
+                <li>✔️ Kesemua coding solution untuk setiap video tutorial supaya mudah untuk rujukan dan praktis.</li>
+                <li>✔️ Penerangan visual yang dijamin membantu korang faham subjek ni lebih baik berbanding kuliah biasa.</li>
+            </ul>
+        </div>
+    </div>
+    <!-- New Content Ends Here -->
+    
+    <div class="container mt-4">
+        <h2 class="text-center">🪔PROMO DEEPAVALI🪔 </h2>
+        <h1 class="text-center">
+            <span class="pricing-tag">
+                Harga asal: <span style="text-decoration: line-through;">RM 199.00</span>
+                <br>
+                Sekarang: <span style="color: #28a745;">RM 59.00 sahaja!</span>
+            </span>
+        </h1>
+
+        <!-- Countdown Timer -->
+        <div class="text-center mt-4">
+            <h3><span id="countdown-timer">6 hari lagi</span> sebelum promo tamat! 🏃‍♂️</h3>
+            <div id="countdown" style="font-size: 2rem; margin-top: 10px; background-color: #dc3545; color: white; padding: 10px; border-radius: 5px;">
+                <span id="days" style="font-weight: bold;">06</span> Hari
+                <span id="hours" style="font-weight: bold;">00</span> Jam
+                <span id="minutes" style="font-weight: bold;">00</span> Minit
+                <span id="seconds" style="font-weight: bold;">00</span> Saat
             </div>
         </div>
-    </section>
+
+        <div class="text-center mt-4">
+            <a href="https://toyyibpay.com/Dsa-Crash-Course-Promo" class="btn btn-success btn-lg">Beli Sekarang!<i class="icofont-credit-card"></i></a>
+        </div>
+    </div>
+</section>
+
+
+
 
 
 
@@ -149,6 +181,51 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+    
+   function startCountdown(days) {
+        var daysElement = document.getElementById('days');
+        var hoursElement = document.getElementById('hours');
+        var minutesElement = document.getElementById('minutes');
+        var secondsElement = document.getElementById('seconds');
+
+        // Check if there is a saved end date in localStorage
+        var endDate = localStorage.getItem('countdownEndDate');
+        
+        // If no end date, set a new one for 6 days from now and store it
+        if (!endDate) {
+            endDate = new Date().getTime() + days * 24 * 60 * 60 * 1000; // 6 days from now
+            localStorage.setItem('countdownEndDate', endDate);
+        }
+
+        function updateCountdown() {
+            var now = new Date().getTime();
+            var timeLeft = endDate - now;
+
+            // Calculate days, hours, minutes, seconds left
+            var daysLeft = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            var hoursLeft = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutesLeft = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            var secondsLeft = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Display the result in respective elements
+            daysElement.textContent = daysLeft.toString().padStart(2, '0');
+            hoursElement.textContent = hoursLeft.toString().padStart(2, '0');
+            minutesElement.textContent = minutesLeft.toString().padStart(2, '0');
+            secondsElement.textContent = secondsLeft.toString().padStart(2, '0');
+
+            // When the countdown reaches zero, reset it to 6 days again
+            if (timeLeft <= 0) {
+                endDate = new Date().getTime() + days * 24 * 60 * 60 * 1000; // Reset to 6 days
+                localStorage.setItem('countdownEndDate', endDate);
+            }
+        }
+
+        // Update the countdown every 1 second
+        setInterval(updateCountdown, 1000);
+    }
+
+    // Start the countdown with 6 days
+    startCountdown(6);
         // Slider testimoni
         $('#testimonialCarousel').carousel({
             interval: 5000 // Tukar interval mengikut keperluan
